@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>¿Me perdonas?</title>
+    <style>
+        /* Estilos generales */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-image: url(https://i.pinimg.com/736x/39/40/5c/39405c086d2f5e03eae2fb1fc69e27c7.jpg);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            padding: 10px;
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .yes {
+            background-color: green;
+            color: white;
+        }
+
+        .no {
+            background-color: red;
+            color: white;
+        }
+
+        /* Ajustes para pantallas más pequeñas */
+        @media (max-width: 600px) {
+            img {
+                max-width: 90%;
+            }
+
+            button {
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <img id="imagen" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQCskkilohtp9on4f7rczoptxNXDOEkGmJZQ&s" alt="Triste">
+    <h2 id="frase">¿Me perdonas?</h2>
+    <div id="botones">
+        <button class="yes" onclick="perdonado()">Sí</button>
+        <button class="no" id="noBtn" onclick="cambiarFrase()">No</button>
+    </div>
+
+    <script>
+        let index = 0;
+        const frases = [
+            {texto: "¿Segura que no?", imagen: "https://wallpapers.com/images/hd/sad-cat-pictures-pgi4d094eba7b19t.jpg"},
+            {texto: "Piensa bien...", imagen: "https://media.tenor.com/z0caa5zhXWMAAAAe/gato-triste.png"},
+            {texto: "Por favor, perdóname...", imagen: "https://i.pinimg.com/236x/10/26/cb/1026cbea7b06928df53e66045a1badaf.jpg"},
+            {texto: "Voy a llorar...", imagen: "https://media.tenor.com/tw2n_40V3_0AAAAe/gatito-llorando.png"},
+            {texto: "Te extraño mucho...", imagen: "https://i.pinimg.com/236x/37/79/87/37798757f58580a02fcaa99f7e6f5c1c.jpg"},
+            {texto: "Daaaaleeee", imagen: "https://i.pinimg.com/1200x/90/80/59/90805915f0a1616ead4af48975d04378.jpg"},
+            {texto: "Porfaaaa", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKm0explNx-anWZAibOm6D8_qpytB5o0OfJBcOc6PkUMtCHpqPRBskgvE4lToBixIiJTc&usqp=CAU"},
+            {texto: "perdoooonnnn", imagen: "https://pbs.twimg.com/profile_images/1826349828357369856/fA6Pk3Rm_400x400.jpg"},
+            {texto: "segura segura?", imagen: "https://i.pinimg.com/564x/3e/12/00/3e1200fac30ace02d0990056fef96f28.jpg"},
+            {texto: "voy a seguir asi hasta que apretes que si eh", imagen: "https://fotografias.lasexta.com/clipping/cmsimages02/2017/09/15/EF20D9EA-B487-41A0-8640-44DDDB9E5861/69.jpg?crop=854,480,x0,y81&width=1280&height=720&optimize=low&format=webply"},
+            {texto: "no pienso parar", imagen: "https://media.tenor.com/MYWAUAp0A4EAAAAe/perro-triste.png"},
+            {texto: "perdon perdon perdon perdon", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaD8VjFMJbhZr7cAzyCuS8215Nt9fkDzyjP3K-IVga74eiWDj4h3TxlM16J2CaGf_xK8M&usqp=CAU"},
+            {texto: "amoooorrrr", imagen: "https://ih1.redbubble.net/image.5244752975.4072/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"},
+            {texto: "ni un poquito)", imagen: "https://img.wattpad.com/c45a0dcaf698ae742113ca4f12ce60c7b73acc86/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f6864666876616c316769476431773d3d2d34302e313565336332383732633966353863333339373432333634353534352e6a7067?s=fit&w=720&h=720"}
+        ];
+
+        function cambiarFrase() {
+            index = (index + 1) % frases.length;
+            let imagen = document.getElementById("imagen");
+            imagen.style.opacity = 0; // Oculta la imagen antes de cambiarla
+
+            setTimeout(() => {
+                document.getElementById("frase").textContent = frases[index].texto;
+                imagen.src = frases[index].imagen;
+                imagen.style.opacity = 1; // Hace la transición suave
+            }, 500); // Espera 0.5 segundos antes de cambiar la imagen
+        }
+
+        function perdonado() {
+            let imagen = document.getElementById("imagen");
+            imagen.style.opacity = 0; // Efecto de transición al cambiar de imagen
+            setTimeout(() => {
+                document.getElementById("frase").textContent = "awwww te amo mucho mi amor  💕 💕";
+                imagen.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQTO58_3KHNuP62dWzWumk5Mlj7Qzbk1Qny0L8g3Tiv83sQmpYMBYlWcyf3Zj6guHEnZA&usqp=CAU";
+                imagen.style.opacity = 1;
+                document.getElementById("botones").style.display = "none";
+            }, 500);
+        }
+    </script>
+</body>
+</html>
